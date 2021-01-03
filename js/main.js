@@ -46,6 +46,7 @@ function purchaseClicked() {
 }
 
 function addToCartClicked(event) {
+    event.preventDefault()
     var button = event.target
     var shopItem = button.parentElement.parentElement.parentElement
     var title = shopItem.getElementsByClassName('card-title')[0].innerText
@@ -104,12 +105,14 @@ function LikeHeart(event) {
 }
 
 function removeCartItem(event) {
+    event.preventDefault()
     var buttonClicked = event.target
     buttonClicked.parentElement.parentElement.remove()
     updateCartTotal()
 }
 
 function updateCartTotal() {
+    
     var itemContainer = document.getElementsByClassName('tablebody')[0]
     var cartRows = itemContainer.getElementsByTagName('tr')
     //console.log(cartRows)
