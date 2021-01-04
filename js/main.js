@@ -14,9 +14,10 @@ function ready() {
         button.addEventListener('click', addToCartClicked)
     }
 
-    var heartButtons = document.getElementsByClassName('like')
-    for (var i = 0; i< heartButtons.length; i++) {
-        var button = heartButtons[i]
+    // event = 'click' / 'change' ..
+    var heartButton = document.getElementsByClassName('like')
+    for (var i = 0; i< heartButton.length; i++) {
+        var button = heartButton[i]
         button.addEventListener('click', LikeHeart)
     }
 
@@ -94,6 +95,8 @@ function addItem(title, price, imageSrc) {
     //price.innerText = price
 }
 
+// chaque element dans HTML a une liste de classe (classlist)
+// .target recupère l'element sur lequel on a cliqué 
 function LikeHeart(event) {
     event.preventDefault()
     var list = event.target.classList;
@@ -111,8 +114,8 @@ function removeCartItem(event) {
     updateCartTotal()
 }
 
+
 function updateCartTotal() {
-    
     var itemContainer = document.getElementsByClassName('tablebody')[0]
     var cartRows = itemContainer.getElementsByTagName('tr')
     //console.log(cartRows)
@@ -130,9 +133,6 @@ function updateCartTotal() {
 }
 
 
-
-
-
 function quantityChanged(event) {
     var input = event.target
     if (isNaN(input.value) || input.value <= 0) {
@@ -144,8 +144,6 @@ function quantityChanged(event) {
     var itemTotalContainer = item.getElementsByClassName('item-total')[0]
     var itemTotal = quantity * parseFloat(itemPrice);
     itemTotalContainer.innerText = itemTotal
-
-    
     updateCartTotal()
     
 }
